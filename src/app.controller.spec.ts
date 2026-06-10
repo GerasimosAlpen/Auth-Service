@@ -15,8 +15,10 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return "Jomoro Koffee Auth Service API is Running"', () => {
+      expect(appController.getHello()).toBe(
+        'Jomoro Koffee Auth Service API is Running',
+      );
     });
   });
 });
