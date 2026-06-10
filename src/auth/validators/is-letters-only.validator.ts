@@ -16,12 +16,12 @@ export class IsLettersOnlyConstraint implements ValidatorConstraintInterface {
       const char = name[i];
       const code = name.charCodeAt(i);
 
-      const isLowercase = code >= 97 && code <= 122; // a-z
-      const isUppercase = code >= 65 && code <= 90; // A-Z
+      const isLowercase = code >= 97 && code <= 122;
+      const isUppercase = code >= 65 && code <= 90;
       const isSpace = char === ' ';
 
       if (!isLowercase && !isUppercase && !isSpace) {
-        return false; // Found an invalid character
+        return false;
       }
     }
 
