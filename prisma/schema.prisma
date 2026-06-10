@@ -7,13 +7,19 @@ datasource db {
   provider = "mysql"
 }
 
+enum Role {
+  GUEST
+  CUSTOMER
+  ADMIN
+}
+
 model User {
   id         Int    @id @default(autoincrement())
   first_name String @db.VarChar(255)
   last_name  String @db.VarChar(255)
   email      String @unique @db.VarChar(255)
   password   String @db.VarChar(255)
-  role       String @default("CUSTOMER") @db.VarChar(25)
+  role       Role   @default(CUSTOMER)
 
   @@map("users")
 }
