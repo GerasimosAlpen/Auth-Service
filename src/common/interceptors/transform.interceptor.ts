@@ -16,7 +16,6 @@ export class TransformInterceptor implements NestInterceptor {
 
     return next.handle().pipe(
       map((data) => {
-        // Handle array responses (e.g. findMany) or simple values
         if (Array.isArray(data)) {
           return {
             success: true,
@@ -26,7 +25,6 @@ export class TransformInterceptor implements NestInterceptor {
           };
         }
 
-        // Handle object responses (flatten them into the root response)
         if (data && typeof data === 'object') {
           const { message, ...rest } = data;
           delete rest.success;
@@ -38,7 +36,6 @@ export class TransformInterceptor implements NestInterceptor {
           };
         }
 
-        // Handle case where controller returns a primitive or nothing
         return {
           success: true,
           statusCode,

@@ -9,7 +9,7 @@ import {
 export class IsValidPasswordConstraint implements ValidatorConstraintInterface {
   validate(password: any) {
     if (typeof password !== 'string' || password.length < 8) {
-      return false; // Must be at least 8 characters
+      return false;
     }
 
     let digitCount = 0;
@@ -17,7 +17,7 @@ export class IsValidPasswordConstraint implements ValidatorConstraintInterface {
       const char = password[i];
 
       if (char === ' ') {
-        return false; // Spaces are strictly banned
+        return false;
       }
 
       if (char >= '0' && char <= '9') {
@@ -25,7 +25,7 @@ export class IsValidPasswordConstraint implements ValidatorConstraintInterface {
       }
     }
 
-    return digitCount >= 2; // Must contain at least two numbers
+    return digitCount >= 2;
   }
 
   defaultMessage() {

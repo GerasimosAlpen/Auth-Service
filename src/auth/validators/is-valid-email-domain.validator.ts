@@ -12,7 +12,6 @@ export class IsValidEmailDomainConstraint implements ValidatorConstraintInterfac
       return false;
     }
 
-    // Count occurrences of "@"
     let atCount = 0;
     for (let i = 0; i < email.length; i++) {
       if (email[i] === '@') {
@@ -21,19 +20,17 @@ export class IsValidEmailDomainConstraint implements ValidatorConstraintInterfac
     }
 
     if (atCount !== 1) {
-      return false; // Must contain exactly one '@'
+      return false;
     }
 
-    // Split the email into local and domain parts
     const parts = email.split('@');
     const localPart = parts[0];
     const domainPart = parts[1];
 
     if (localPart.length === 0 || domainPart.length === 0) {
-      return false; // Local part or domain part cannot be empty
+      return false;
     }
 
-    // Check that there is at least one '.' in the domain part
     let dotCount = 0;
     for (let i = 0; i < domainPart.length; i++) {
       if (domainPart[i] === '.') {
@@ -42,10 +39,9 @@ export class IsValidEmailDomainConstraint implements ValidatorConstraintInterfac
     }
 
     if (dotCount === 0) {
-      return false; // Domain part must contain at least one dot
+      return false;
     }
 
-    // Check approved suffixes
     const approvedSuffixes = ['.com', '.net', '.org', '.id'];
     let hasValidSuffix = false;
     for (let i = 0; i < approvedSuffixes.length; i++) {
