@@ -37,13 +37,13 @@ async function bootstrap() {
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api/docs', app, document);
 
   const port = process.env.PORT ?? 3001;
   await app.listen(port);
   Logger.log(`Server is running at http://localhost:${port}`, 'Bootstrap');
   Logger.log(
-    `Swagger documentation is available at http://localhost:${port}/api`,
+    `Swagger documentation is available at http://localhost:${port}/api/docs`,
     'Bootstrap',
   );
 }
